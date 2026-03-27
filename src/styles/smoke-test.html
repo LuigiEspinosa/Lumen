@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lumen Token Smoke Test</title>
+    <link rel="stylesheet" href="tokens.css" />
+    <style>
+      body {
+        margin: 0;
+        font-family: var(--font-ui);
+        background: var(--color-bg-editor);
+        color: var(--color-text-primary);
+        transition:
+          background 0.15s,
+          color 0.15s;
+      }
+      .shell {
+        display: grid;
+        grid-template-columns: var(--layout-sidebar-width) 1fr;
+        grid-template-rows: var(--layout-toolbar-height) 1fr var(
+            --layout-statusbar-height
+          );
+        height: 100vh;
+      }
+      .toolbar {
+        grid-column: 1 / -1;
+        background: var(--color-bg-toolbar);
+        border-bottom: 1px solid var(--color-border);
+        display: flex;
+        align-items: center;
+        padding: 0 var(--space-3);
+        font-size: var(--font-size-lg);
+        font-weight: var(--font-weight-semibold);
+      }
+      .toolbar button {
+        margin-left: auto;
+        padding: var(--space-1) var(--space-3);
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--color-border);
+        background: var(--color-surface-tab-inactive);
+        color: var(--color-text-primary);
+        cursor: pointer;
+        font-size: var(--font-size-base);
+      }
+      .sidebar {
+        background: var(--color-bg-sidebar);
+        border-right: 1px solid var(--color-border);
+        padding: var(--space-3);
+        font-size: var(--font-size-md);
+        color: var(--color-text-secondary);
+      }
+      .sidebar .active {
+        background: var(--color-surface-active-file);
+        color: var(--color-text-primary);
+        padding: var(--space-1) var(--space-2);
+        border-radius: var(--radius-sm);
+      }
+      .editor {
+        padding: var(--space-4);
+        font-family: var(--font-editor);
+        font-size: var(--font-size-md);
+        line-height: var(--line-height-relaxed);
+      }
+      .statusbar {
+        grid-column: 1 / -1;
+        background: var(--color-bg-toolbar);
+        border-top: 1px solid var(--color-border);
+        display: flex;
+        align-items: center;
+        padding: 0 var(--space-3);
+        font-size: var(--font-size-sm);
+        gap: var(--space-3);
+      }
+      .clean {
+        color: var(--color-status-clean);
+      }
+      .dirty {
+        color: var(--color-status-dirty);
+      }
+      .accent {
+        color: var(--color-accent);
+      }
+      .muted {
+        color: var(--color-text-muted);
+      }
+      .command-palette {
+        display: inline-block;
+        margin-top: var(--space-4);
+        padding: var(--space-4);
+        background: var(--color-surface-tab-active);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-palette);
+        min-width: 320px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <div class="toolbar">
+        Lumen
+        <button onclick="document.documentElement.classList.toggle('dark')">
+          Toggle Dark
+        </button>
+      </div>
+      <div class="sidebar">
+        <div>▾ notes</div>
+        <div class="active">getting-started.md</div>
+        <div class="muted">setup.md</div>
+        <div class="muted">▸ projects</div>
+      </div>
+      <div class="editor">
+        <div
+          style="
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-bold);
+          "
+        >
+          # Getting Started
+        </div>
+        <br />
+        <div>Link notes using <span class="accent">[[wikilinks]]</span>.</div>
+        <div class="muted">See [[setup]] for more details.</div>
+        <br />
+        <div class="command-palette">
+          <div
+            style="
+              font-size: var(--font-size-xs);
+              font-weight: var(--font-weight-semibold);
+            "
+            class="muted"
+          >
+            NOTE
+          </div>
+          <div>getting-started.md</div>
+          <div style="font-size: var(--font-size-xs)" class="muted">
+            ↑↓ navigate ↵ open Esc dismiss
+          </div>
+        </div>
+        <br />
+        <div>
+          <span class="dirty">● M getting-started.md</span> &nbsp;
+          <span class="clean">● A new-idea.md</span>
+        </div>
+      </div>
+      <div class="statusbar">
+        <span>~/my-studies</span>
+        <span class="muted">|</span>
+        <span>getting-started.md</span>
+        <span class="muted">|</span>
+        <span class="clean">● clean</span>
+        <span class="muted" style="margin-left: auto">142 words</span>
+      </div>
+    </div>
+  </body>
+</html>
