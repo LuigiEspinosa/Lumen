@@ -19,7 +19,7 @@
   --color-text-muted: #aeaebc;
 
   /* Accent */
-  --color-accent: #3b82c4;
+  --color-accent: #5b9fe0;
 
   /* Git status */
   --color-git-modified: #c07800;
@@ -73,7 +73,7 @@
   --radius-lg: 8px;
 
   /* Shadows */
-  --shadow-palette: 0 8px 32px rgba(0, 0, 0, 0.28);
+  --shadow-palette: 0 8px 32px rgba(0, 0, 0, 0.56);
 }
 
 .dark {
