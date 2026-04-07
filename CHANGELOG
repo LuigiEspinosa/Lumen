@@ -1,5 +1,27 @@
 # CHANGELOG
 
+## [0.2.0] - 2026-04-07
+
+### Added
+
+- Vault open via native OS folder picker (`tauri-plugin-dialog`).
+- Vault path persisted across restarts in `~/.config/lumen/vault.toml`.
+- Zustand vault store (tree, active path, async load state).
+- File tree sidebar: collapsible folders, `.md`-only, dirs-first sort.
+- Inline F2 rename with collision detection.
+- Delete key with confirmation prompt.
+- New file button: creates empty `.md` at vault root.
+
+### Fixed
+
+- `dirs::config_local_dir` unwrap replaced with explicit error in minimal WSL envs.
+- Remembered vault path silently discarded if directory no longer exists.
+- Rename command rejects target filename that already exists.
+- New file defaults to vault root when no folder context is available.
+- Vault picker cancel no longer triggers `open_vault`.
+- File tree loaded before transitioning to Screen 02 (no empty sidebar flash).
+- Sidebar uses `flex-shrink: 0;` to prevent content area overflow collapsing it.
+
 ## [0.1.0] - 2026-04-06
 
 ### Added
