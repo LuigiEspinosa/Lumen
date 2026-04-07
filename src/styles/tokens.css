@@ -1,0 +1,150 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Backgrounds */
+  --color-bg-editor: #fafaf8;
+  --color-bg-sidebar: #f0eff0;
+  --color-bg-toolbar: #eaeae8;
+  --color-bg-panel: #fafaf8;
+
+  /* Surfaces */
+  --color-surface-tab-active: #ffffff;
+  --color-surface-tab-inactive: #eaeae8;
+  --color-surface-active-file: #e8f0fb;
+
+  /* Border */
+  --color-border: #d8d8d6;
+
+  /* Text */
+  --color-text-primary: #1c1c22;
+  --color-text-secondary: #72727a;
+  --color-text-muted: #aeaebc;
+
+  /* Accent */
+  --color-accent: #5b9fe0;
+
+  /* Git status */
+  --color-git-modified: #c07800;
+  --color-git-added: #2c9e5a;
+  --color-git-untracked: #aeaebc;
+
+  /* App status */
+  --color-status-clean: #2c9e5a;
+  --color-status-dirty: #c07800;
+
+  /* Typography */
+  --font-ui: system-ui, -apple-system, sans-serif;
+  --font-editor: "JetBrains Mono", "Fira Code", monospace;
+  --font-preview: Georgia, "Times New Roman", serif;
+
+  --font-size-xs: 10px;
+  --font-size-sm: 11px;
+  --font-size-base: 12px;
+  --font-size-md: 13px;
+  --font-size-lg: 14px;
+  --font-size-xl: 17px;
+  --font-size-2xl: 22px;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.2;
+  --line-height-base: 1.5;
+  --line-height-relaxed: 1.6;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* Layout */
+  --layout-sidebar-width: 240px;
+  --layout-toolbar-height: 40px;
+  --layout-statusbar-height: 28px;
+  --layout-gutter-width: 28px;
+
+  /* Radius */
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+
+  /* Shadows */
+  --shadow-palette: 0 8px 32px rgba(0, 0, 0, 0.56);
+}
+
+.dark {
+  /* Backgrounds */
+  --color-bg-editor: #1c1c24;
+  --color-bg-sidebar: #16161e;
+  --color-bg-toolbar: #13131a;
+  --color-bg-panel: #1c1c24;
+
+  /* Surfaces */
+  --color-surface-tab-active: #1c1c24;
+  --color-surface-tab-inactive: #13131a;
+  --color-surface-active-file: #1e2d40;
+
+  /* Border */
+  --color-border: #2a2a36;
+
+  /* Text */
+  --color-text-primary: #e2e2ea;
+  --color-text-secondary: #8a8a96;
+  --color-text-muted: #4a4a58;
+
+  /* Accent */
+  --color-accent: #589fe0;
+
+  /* Git status */
+  --color-git-modified: #d4920a;
+  --color-git-added: #3ebd72;
+  --color-git-untracked: #4a4a58;
+
+  /* App status */
+  --color-status-clean: #3ebd72;
+  --color-status-dirty: #d4920a;
+}
+
+/* Layout utility classes */
+.screen-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: var(--color-bg-editor);
+}
+
+.app-shell {
+  display: flex;
+  height: 100vh;
+  background: var(--color-bg-editor);
+  overflow: hidden;
+}
+
+.sidebar {
+  height: 100%;
+  background: var(--color-bg-sidebar);
+  border-right: 1px solid var(--color-border);
+  overflow-y: auto;
+
+  /* flex-shrink: 0; ensures the sidebar never collapses when the content area 
+  grow. Without this, flex children shrink proportionally and the sidebar
+  width becomes undefined at certain window sizes. */
+  flex-shrink: 0;
+}
+
+.content-area {
+  height: 100%;
+  overflow: hidden;
+  flex: 1;
+}
