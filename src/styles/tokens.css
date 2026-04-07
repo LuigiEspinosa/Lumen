@@ -108,3 +108,37 @@
   --color-status-clean: #3ebd72;
   --color-status-dirty: #d4920a;
 }
+
+/* Layout utility classes */
+.screen-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: var(--color-bg-editor);
+}
+
+.app-shell {
+  display: flex;
+  height: 100vh;
+  background: var(--color-bg-editor);
+  overflow: hidden;
+}
+
+.sidebar {
+  height: 100%;
+  background: var(--color-bg-sidebar);
+  border-right: 1px solid var(--color-border);
+  overflow-y: auto;
+
+  /* flex-shrink: 0; ensures the sidebar never collapses when the content area 
+  grow. Without this, flex children shrink proportionally and the sidebar
+  width becomes undefined at certain window sizes. */
+  flex-shrink: 0;
+}
+
+.content-area {
+  height: 100%;
+  overflow: hidden;
+  flex: 1;
+}
