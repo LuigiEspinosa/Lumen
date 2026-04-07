@@ -1,11 +1,20 @@
 import { useEffect } from "react";
 import { open } from "@tauri-apps/plugin-dialog";
 import { useVaultStore } from "./stores/vault";
-import "./styles/tokens.css";
+import { FileTree } from "./components/sidebar/FileTree";
+import { NewFileButton } from "./components/sidebar/NewFileButton";
 
 function App() {
-  const { vaultPath, loading, error, openVault, loadLastVault } =
-    useVaultStore();
+  const {
+    vaultPath,
+    tree,
+    activePath,
+    loading,
+    error,
+    openVault,
+    loadLastVault,
+    setActivePath,
+  } = useVaultStore();
 
   useEffect(() => {
     loadLastVault();
@@ -103,23 +112,44 @@ function App() {
     <div className="app-shell">
       <div className="sidebar" style={{ width: "var(--layout-sidebar-width)" }}>
         <div
-          className="content-area"
           style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            padding: "8px 8px 4px",
+            color: "var(--color-text-secondary)",
+            fontFamily: "var(--font-ui)",
+            fontSize: "var(--font-size-sm)",
+            fontWeight: "var(--font-weight-medium)",
+            borderBottom: "1px solid var(--color-border)",
           }}
         >
-          <span
-            style={{
-              fontFamily: "var(--font-ui)",
-              fontSize: "var(--font-size-md)",
-              color: "var(--color-text-secondary)",
-            }}
-          >
-            Select a file to begin editing
-          </span>
+          {vaultPath.split("/").pop()}
         </div>
+        <NewFileButton vaultPath={vaultPath} />
+        <FileTree
+          entries={tree}
+          activePath={activePath}
+          onSelect={setActivePath}
+        />
+      </div>
+
+      <div
+        className="content-area"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <span
+          style={{
+            fontFamily: "var(--font-ui)",
+            fontSize: "var(--font-size-md)",
+            color: "var(--color-text-secondary)",
+          }}
+        >
+          {activePath
+            ? activePath.split("/").pop()
+            : "Select a file to begin editing"}
+        </span>
       </div>
     </div>
   );
